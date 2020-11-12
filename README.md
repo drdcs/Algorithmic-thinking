@@ -88,6 +88,7 @@ You might wonder how we can implement a function that calls itself. The trick is
  **reverse a linked list recursively**
  
  ```python
+ 
  class Node:
     def __init__(self, data=None, next=None):
         self.data = data
@@ -117,8 +118,6 @@ def reverse(head):
     first.next = None
     head = rest
     return head
-    
-
 
 if __name__ == '__main__':
     head = None
@@ -128,4 +127,4 @@ if __name__ == '__main__':
     head = reverse(head)
     printList("After Swap Pair: ",head)
     
-    ```
+ ```
