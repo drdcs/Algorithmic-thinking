@@ -36,3 +36,48 @@ You might wonder how we can implement a function that calls itself. The trick is
   ```
   * printReverse(str[1...n-1]): print the substring str[1...n-1] in reverse order.
   * print(str[0]): print the first character in the string.
+  
+  **Problem : To swap the pairs.**
+  
+  ```python
+  
+  class Node:
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
+  
+  def printList(msg, head):
+      print(msg, end= '')
+      ptr = head
+      while ptr:
+           print(ptr.data, end= "->")
+           ptr = ptr.next
+      print("None")
+
+
+  def swapPairs(head):
+      if not head or not head.next:
+          return head
+
+      # nodes to be swapped
+
+      first_node = head
+      second_node = head.next
+
+      # swapping 
+
+      first_node.next = swapPairs(second_node.next)
+      second_node.next = first_node
+      return second_node
+
+
+
+  if __name__ == '__main__':
+      head = None
+      for i in reversed(range(8)):
+          head = Node(i+1, head)
+      printList("Before Swap Pair: ",head)
+      head = swapPairs(head)
+      printList("After Swap Pair: ",head)
+  ```
+  
