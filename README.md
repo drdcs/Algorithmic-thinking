@@ -39,6 +39,11 @@ You might wonder how we can implement a function that calls itself. The trick is
   
   **Problem : To swap the pairs.**
   
+  ```
+  Input: head = [1,2,3,4]
+  Output: [2,1,4,3]
+  ```
+  
   ```python
   
   class Node:
