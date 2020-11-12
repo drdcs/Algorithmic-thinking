@@ -85,4 +85,47 @@ You might wonder how we can implement a function that calls itself. The trick is
       head = swapPairs(head)
       printList("After Swap Pair: ",head)
   ```
+ **reverse a linked list recursively**
+ 
+ ```python
+ class Node:
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
   
+def printList(msg, head):
+    print(msg, end= '')
+    ptr = head
+    while ptr:
+         print(ptr.data, end= "->")
+         ptr = ptr.next
+    print("None")
+        
+def reverse(head):
+    # emplty list base case
+    if head is None:
+        return head
+    first = head # [1,2,3]
+    rest = head.next # [2,3]
+    
+    #empty rest base case
+    if rest is None:
+        return head
+        
+    rest = reverse(rest) # recursively reverse rest.
+    first.next.next = first # put 1st elemt at end of list
+    first.next = None
+    head = rest
+    return head
+    
+
+
+if __name__ == '__main__':
+    head = None
+    for i in reversed(range(8)):
+        head = Node(i+1, head)
+    printList("Before Swap Pair: ",head)
+    head = reverse(head)
+    printList("After Swap Pair: ",head)
+    
+    ```
