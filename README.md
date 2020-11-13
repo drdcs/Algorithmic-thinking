@@ -128,3 +128,49 @@ if __name__ == '__main__':
     printList("After Swap Pair: ",head)
     
  ```
+**now we will look into recursive implementation of the binary search tree**
+- insert into the bst.
+- search item in bst.
+```python
+class BST:
+    
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left= left
+        self.right= right
+        
+
+def inorder(root):
+    if root is None:
+        return
+    inorder(root.left)
+    print(root.val, end =' ')
+    inorder(root.right)
+    
+    
+def insert(root, key):
+    if root is None:
+        return BST(key)
+    # if given key is less than root node
+    # recur left ..
+    if key < root.val:
+        root.left = insert(root.left, key)
+    else:
+        root.right = insert(root.right, key)
+    return root
+    
+def searchBST(root, item):
+    if root is None or root.val == item:
+        return root.val
+    return searchBST(root.left, item) if item < root.val else searchBST(root.right, item)
+        
+if __name__ == '__main__':
+    root = None
+    keys = [15, 10, 20, 8, 12, 16, 26]
+    for key in keys:
+        root = insert(root, key)
+        
+    print(inorder(root))
+    
+    print(searchBST(root, 16))
+ ```
