@@ -174,3 +174,64 @@ if __name__ == '__main__':
     
     print(searchBST(root, 16))
  ```
+**Binary Tree traversal**
+
+
+
+Preorder : Pre-order traversal is to visit the root first. Then traverse the left subtree. Finally, traverse the right subtree.
+
+F -> B -> A -> D -> C -> E -> G -> I -> H
+
+Inorder Traversal: In-order traversal is to traverse the left subtree first. Then visit the root. Finally, traverse the right subtree.
+
+A -> B -> C -> D -> E -> F -> G -> H -> I
+
+Post-Order Traversal: Post-order traversal is to traverse the left subtree first. Then traverse the right subtree. Finally, visit the root.
+
+A -> C -> E -> D -> B -> H -> I -> G -> F
+
+
+```python
+class TreeNode:
+    def __init__(self,x):
+        self.val = x
+        self.left = None
+        self.right = None
+        
+def preOrderTraversalIterative(root):
+    if root is None:
+        return
+    
+    stack, output = [root,], []
+    while stack:
+        root = stack.pop()
+        if root is not None:
+            output.append(root.val)
+            
+            if root.right is not None:
+                stack.append(root.right)
+            if root.left is not None:
+                stack.append(root.left)
+    return output
+
+def preOrderTraversalRecursive(root):
+    output = []
+    helper(root, output)
+    return output
+def helper(root, output):
+    if root is None:
+        return
+    output.append(root.val)
+    helper(root.left, output)
+    helper(root.right, output)
+
+
+if __name__ == '__main__':
+    root = TreeNode(2)
+    root.left = TreeNode(1)
+    root.left.left = TreeNode(4)
+    root.right = TreeNode(3)
+    root.right.right = TreeNode(5)
+    print(preOrderTraversal(root))
+    print(preOrderTraversalRecursive(root))
+```
