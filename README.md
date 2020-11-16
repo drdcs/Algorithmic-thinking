@@ -232,6 +232,6 @@ if __name__ == '__main__':
     root.left.left = TreeNode(4)
     root.right = TreeNode(3)
     root.right.right = TreeNode(5)
-    print(preOrderTraversal(root))
+    print(preOrderTraversalIterative(root))
     print(preOrderTraversalRecursive(root))
 ```
