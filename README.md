@@ -242,11 +242,15 @@ def inOrderTraversalIterative(root):
         res.append(node.val)
         root = node.right
 
+# find the level of a tree ..
+
 def findLevel(root):
     if root is None:
         return 0
     return 1 + max(findLevel(root.left),findLevel(root.right))
-        
+    
+## check if a binary tree is symmetric .. 
+
 def isSymmetry(root):
     if root is None:
         return True
