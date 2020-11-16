@@ -214,10 +214,13 @@ def preOrderTraversalIterative(root):
                 stack.append(root.left)
     return output
 
+
 def preOrderTraversalRecursive(root):
     output = []
     helper(root, output)
     return output
+    
+    
 def helper(root, output):
     if root is None:
         return
@@ -225,13 +228,48 @@ def helper(root, output):
     helper(root.left, output)
     helper(root.right, output)
 
+def inOrderTraversalIterative(root):
+    res , stack = [], []
+    while True:
+        while root:
+            stack.append(root)
+            root = root.left
+            
+        if not stack:
+            return res
+        
+        node = stack.pop()
+        res.append(node.val)
+        root = node.right
 
+def findLevel(root):
+    if root is None:
+        return 0
+    return 1 + max(findLevel(root.left),findLevel(root.right))
+        
+def isSymmetry(root):
+    if root is None:
+        return True
+    else:
+        return isSymmetryHelper(root.left, root.right)
+
+def isSymmetryHelper(t1, t2):
+    if (t1 is None and t2 is None):
+        return True
+    if (t1 is None or t2 is None):
+        return False
+    return (t1.val == t2.val) and isSymmetryHelper(t1.left, t2.right) and isSymmetryHelper(t1.right, t2.left)
+    
 if __name__ == '__main__':
     root = TreeNode(2)
-    root.left = TreeNode(1)
-    root.left.left = TreeNode(4)
+    root.left = TreeNode(3)
+    root.left.left = TreeNode(5)
     root.right = TreeNode(3)
     root.right.right = TreeNode(5)
+    root.right.right.right = TreeNode(6)
     print(preOrderTraversalIterative(root))
     print(preOrderTraversalRecursive(root))
+    print(inOrderTraversalIterative(root))
+    print(findLevel(root))
+    print(isSymmetry(root))
 ```
